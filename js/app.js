@@ -176,7 +176,7 @@ let totGross = 0;
   for (let i = 0; i < bondFilms.length; i++) {
     totGross += Number(bondFilms[i]["gross"].replace(/[,$]/g,""));
   }
-  console.log(totGross.toString().split('').reverse().join('').replace(/(\d{3})/g,"$1,").split('').reverse().join('')); ///NOTE\\ Ask Ryan to go over this problem in class tomorrow.
+  console.log(totGross) ///NOTE\\ Ask Ryan to go over this problem again in class tomorrow.
 
   //Hungry For More?
   let actorAmount = { };
