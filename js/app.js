@@ -151,7 +151,7 @@ const bondFilms = [
      ];
 //5.
 const bondTitles = []; 
-for (let i = 0; i <bondFilms.length; i++){
+for (let i = 0; i < bondFilms.length; i++){
  bondTitles.push(bondFilms[i].title);
 }
 console.log(bondTitles);
@@ -160,7 +160,7 @@ console.log(bondTitles);
 const oddBonds = [];
   for (let i = 0; i < bondFilms.length; i ++) {
       if (bondFilms[i].year % 2 !== 0) {
-          oddBonds.push(bondFilms[i].title);
+          oddBonds.push(bondFilms[i]);
       }
 }
   console.log(oddBonds);
@@ -172,8 +172,31 @@ const oddBonds = [];
 //regular expression, and returns a new string where the specified values 
 //are replaced.
 //7. 
-const totGross = 0;
+let totGross = 0;
   for (let i = 0; i < bondFilms.length; i++) {
     totGross += Number(bondFilms[i]["gross"].replace(/[,$]/g,""));
   }
-  console.log(totGross); ///NOTE\\ Ask Ryan to go over this problem in class tomorrow.
+  console.log(totGross.toString().split('').reverse().join('').replace(/(\d{3})/g,"$1,").split('').reverse().join('')); ///NOTE\\ Ask Ryan to go over this problem in class tomorrow.
+
+  //Hungry For More?
+  let actorAmount = { };
+for (let i = 0; i < bondFilms.length; i++) {
+	if (!actorAmount[bondFilms[i].actor]) {
+		actorAmount[bondFilms[i].actor] = 0;
+	} 
+	actorAmount[bondFilms[i].actor]++;	
+};
+let actorSort = [];
+for (var actor in actorAmount ) {
+    actorSort.push([actor, actorAmount[actor]]);
+}
+actorSort.sort(function(a, b) {
+    return a[1] - b[1];
+});
+console.log(actorSort);
+for (let i = 0; i < bondFilms.length; i++) {
+	if (bondFilms[i].actor === actorSort[0][0]) {
+		console.log(bondFilms[i]);
+	}
+}
+  
